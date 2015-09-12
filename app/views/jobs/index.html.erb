@@ -1,0 +1,29 @@
+<h1>Listagem de Vagas</h1>
+
+
+  <p>Nao temos vagas</p>
+
+  <table>
+    <tr>
+      <th>Titulo</th>
+      <th>Descricao</th>
+      <th>Acões</th>
+    </tr>
+
+    <tr>
+      <% @jobs.each do |j|%>
+      <td><%=j.title %></td>
+      <td><%=j.description %></td>
+      <td>
+      <%= link_to "Editar", edit_job_path(j.id) %>
+      <%= link_to "Ver", job_path(j.id) %>
+      <%= link_to "Apagar", job_path(j.id), method: :delete %>
+
+      </td>
+      <% end %>
+    </tr>
+  </table>
+
+<br><br><br><br>
+<p>Crie uma nova no link abaixo!</p>
+<%= link_to "Nova Vaga", new_job_path %>
