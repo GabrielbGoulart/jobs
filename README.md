@@ -1,4 +1,4 @@
-== README
+# Jobs - Aplicação de Exemplo
 
 Esse é o projeto inicial para simular uma simples listagem de vagas de trabalho. Para começar é simples
 
