@@ -12,6 +12,30 @@
  *
  *= require_tree .
  *= require_self
+ *= require materialize
  */
- 
+
 @import "materialize";
+
+.btn-add {
+  font-size: 2em;
+  color: white !important;
+}
+
+.btn-add-app {
+  font-size: 1em !important;
+  color: white !important;
+  text-align: center;
+}
+
+a {
+  color: #A4373D !important;
+}
+
+.job-show {
+  color: $primary-color;
+}
+
+.identification {
+  border: 1px solid $primary-color
+}

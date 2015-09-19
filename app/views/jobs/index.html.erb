@@ -1,34 +1,33 @@
 <h1 class="center">Listagem de Vagas</h1>
+  <div class="container center">
+    <% if @jobs.empty? %>
+    <p>Nao temos vagas</p>
+    <% else %>
 
-  <% if @jobs.empty? %>
-  <p>Nao temos vagas</p>
-  <% else %>
-
-    <table>
-      <tr>
-        <th>Titulo</th>
-        <th>Descricao</th>
-        <th>Valor</th>
-        <th>Acões</th>
-      </tr>
+      <table class="striped">
+        <tr>
+          <th class="data-field">Titulo</th>
+          <th class="data-field">Descricao</th>
+          <th class="data-field">Valor</th>
+          <th class="data-field">Acões</th>
+        </tr>
 
 
-      <% @jobs.each do |j|%>
-      <tr>
-        <td><%=j.title %></td>
-        <td><%=j.description %></td>
-        <td><%=j.value %></td>
-        <td>
-        <%= link_to "Editar", edit_job_path(j.id) %>
-        <%= link_to "Ver", job_path(j.id) %>
-        <%= link_to "Apagar", job_path(j.id), method: :delete %>
-        </td>
-      </tr>
-      <% end %>
+        <% @jobs.each do |j|%>
+        <tr>
+          <td><%=j.title %></td>
+          <td><%=j.description %></td>
+          <td><%=j.value %></td>
+          <td>
+          <%= link_to "Editar", edit_job_path(j.id) %> |
+          <%= link_to "Ver", job_path(j.id) %> |
+          <%= link_to "Apagar", job_path(j.id), method: :delete %>
+          </td>
+        </tr>
+        <% end %>
 
-    </table>
-  <% end %>
-
-<br><br><br><br>
-<p>Crie uma nova no link abaixo!</p>
-<%= link_to "Nova Vaga", new_job_path %>
+      </table>
+    <% end %>
+    <br><br>
+    <p><%= link_to "+", new_job_path, class: "btn-floating btn-large waves-effect waves-light red btn-add" %></p>
+  </div> <!-- container -->
