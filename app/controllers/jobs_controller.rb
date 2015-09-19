@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_applications, only: [:show, :destroy]
 
   def index
     @jobs = Job.all
@@ -10,9 +11,10 @@ class JobsController < ApplicationController
   end
 
   def create
-    job = Job.new(jobs_params)
+    job = Job.new(job_params)
+
     if job.save
-      redirect_to jobs_path, bla: "Criado com sucesso!"
+      redirect_to jobs_path, notice: "Criado com sucesso!"
     else
       redirect_to new_job_path, alert: "Erro"
     end
@@ -22,12 +24,11 @@ class JobsController < ApplicationController
   end
 
   def update
-    if @job.update(jobs_params)
+    if @job.update(job_params)
       redirect_to jobs_path, notice: "Atualizado com sucesso! URU"
     else
       redirect_to edit_job_path(@job.id), alert: "DEU ERRO AI"
     end
-
   end
 
   def show
@@ -38,16 +39,17 @@ class JobsController < ApplicationController
     redirect_to jobs_path, notice: 'Vaga deletada'
   end
 
-
-
   private
-
-  def jobs_params
+  def job_params
     params.require(:job).permit(:title, :description, :value)
   end
 
   def set_job
-    @job = Job.find(params[:id])
+    @job = Job.includes(:applications).find(params[:id])
   end
 
+  def set_applications
+    @applications = @job.applications
+
+  end
 end
