@@ -1,17 +1,24 @@
-<h1><%= @job.title %></h1>
-<h2><%= @job.description %></h2>
-<h3><%= @job.value %></h3>
-<br>
+<div class="container">
+  <ul class=" ">
+    <li class="waves-effect right"><%= link_to "Home", root_path %> </li>
+  </ul>
 
-<%= link_to "Home", root_path %> <br>
-<%= link_to "Fazer aplicação", new_job_application_path(@job) %>
-<h4>Aplicações</h4>
-<table>
-<% @applications.each do |app| %>
-  <tr>
-    <td><%= app.name %></td>
-    <td><%= app.email %></td>
-    <td><%= app.reasons %></td>
-  </tr>
-<% end %>
-</table>
+  <p>Título<h4 class="job-show"><%= @job.title %></h1></p>
+  <p>Descrição<h4 class="job-show"><%= @job.description %></h2></p>
+  <p>Salário<h4 class="job-show"><%= @job.value %></h3></p>
+  <br>
+
+
+
+  <h4>Aplicações <%= link_to "+", new_job_application_path(@job), class: "btn-floating btn-medium waves-effect waves-light red btn-add-app" %></h4>
+  <table class="striped">
+  <% @applications.each do |app| %>
+    <tr>
+      <td>
+        <div class="identification"><%= "#{app.name} | #{app.email}"  %></div><br>
+        <%= app.reasons %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div> <!-- end container -->
