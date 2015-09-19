@@ -1,0 +1,9 @@
+<table>
+<% @applications.each do |app| %>
+  <tr>
+    <td><%= app.name %></td>
+    <td><%= app.email %></td>
+    <td><%= app.reasons %></td>
+  </tr>
+<% end %>
+</table>
