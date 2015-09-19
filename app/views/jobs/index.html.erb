@@ -11,8 +11,9 @@
       <th>Acões</th>
     </tr>
 
+
+    <% @jobs.each do |j|%>
     <tr>
-      <% @jobs.each do |j|%>
       <td><%=j.title %></td>
       <td><%=j.description %></td>
       <td><%=j.value %></td>
@@ -20,10 +21,10 @@
       <%= link_to "Editar", edit_job_path(j.id) %>
       <%= link_to "Ver", job_path(j.id) %>
       <%= link_to "Apagar", job_path(j.id), method: :delete %>
-
       </td>
-      <% end %>
     </tr>
+    <% end %>
+
   </table>
 
 <br><br><br><br>
