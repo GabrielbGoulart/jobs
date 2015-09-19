@@ -15,7 +15,12 @@
   <% @applications.each do |app| %>
     <tr>
       <td>
-        <div class="identification"><%= "#{app.name} | #{app.email}"  %></div><br>
+        <div class="identification">
+          <%= "#{app.name} | #{app.email}"  %>
+          <div class="right">
+            <%= app.created_at %>
+          </div>
+        </div><br>
         <%= app.reasons %>
       </td>
     </tr>
